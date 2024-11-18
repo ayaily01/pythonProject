@@ -6,7 +6,7 @@ class first:
     def __init__(self):
         pass
     def app(self):
-        st.title('Creation of DataFramegbls')
+        st.title('Creation of DataFrames')
 
 
         def load_data(file):
@@ -21,7 +21,7 @@ class first:
             df = load_data(upload)
             st.dataframe(df,height=400,width=600)
 
-            column = st.selectbox("Vybiray colonku for filtr", df.columns)
+            column = st.selectbox("Choose column for filter", df.columns)
 
             if column:
                 unique_values = df[column].unique()
@@ -32,11 +32,11 @@ class first:
                 st.dataframe(filtered_df,height=400,width=600)
         else:
 
-            st.warning("Upload csv yopta")
+            st.warning("Upload csv-file")
 
         st.markdown("""<style>
         h1 {
-        color:blue;
+        color:pink;
         font-size:18px;
         text-align:center;
         }

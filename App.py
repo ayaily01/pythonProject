@@ -9,17 +9,17 @@ import os
 import pandas as pd
 import numpy as np
 
-image = Image.open('img/pingi.jpg')
+image = Image.open('./img/pingi.jpg')
 st.set_page_config(initial_sidebar_state="collapsed", page_icon=image)
 
-logo_path = os.path.join(os.path.dirname(__file__), "img", "pingi.svg")
+logo_path = os.path.join(os.path.dirname(__file__), "img", "bomj.svg")
 pages = [" ",'Home','first', 'second', 'third']
 
 pages = ['Home', 'first', 'second', 'third']
 
 styles = {
     "nav": {
-        "background-color": "darkblue",
+        "background-color": "pink",
         "display":"flex",
         "justify-content" : "center"
     },
@@ -42,13 +42,12 @@ styles = {
         "padding" : "0.2rem 0.725rem",
     },
     "active" : {
-        "background-color" : "blue",
         "color":"white",
         "font-weight":"normal",
         "padding":"14px"
     },
     "hover" : {
-        "background-color": "blue "
+        "background-color": "wheat"
     }
 }
 

@@ -13,23 +13,23 @@ class second:
 
 
     def app(self):
-        st.title('Stream contenta josko 0_0')
+        st.title('Streaming Visualization')
 
         source_option = st.selectbox(
-            "Sourcik vyberi pacan",
-            ("Pokophone","Youtube Link","Local Drive","Web-Camera","RTSP")
+            "Choose Source please",
+            ("Mobilephone","Youtube Link","Local Drive","Web-Camera","RTSP")
         )
 
         video_url=None
         img_file=None
 
-        if source_option == "Pokophone":
-            img_file = st.camera_input("Take a photorrrs")
+        if source_option == "Mobilephone":
+            img_file = st.camera_input("Take a photo")
 
         elif source_option == "Youtube Link":
             youtube_url = st.text_input("Put in a link")
             if youtube_url:
-                with st.spinner("Gruzitsya..."):
+                with st.spinner("Loading..."):
                     try:
                         ydl_opts = {"format": "best[ext=mp4]/best", "noplaylist":True}
                         with YoutubeDL(ydl_opts) as ydl:
@@ -42,7 +42,7 @@ class second:
                     st.video(video_url)
 
         elif source_option == "Local Drive":
-            video_file = st.file_uploader("Upload vidos", type=["mp4","avi","mov"])
+            video_file = st.file_uploader("Upload video", type=["mp4","avi","mov"])
             if video_file:
 
                 temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=Path(video_file.name).suffix)
@@ -51,7 +51,7 @@ class second:
                 st.video(video_url)
 
         elif source_option == "Web-Camera":
-            st.write("Webka gruzitsya...")
+            st.write("Web-camera loading...")
             webrtc_streamer(key="webcam",mode=WebRtcMode.SENDRECV)
 
         elif source_option == "RTSP":
@@ -59,10 +59,10 @@ class second:
             if rtsp_url:
                 video_url = rtsp_url
 
-        run_button = st.button("Oh heeeeell naah")
+        run_button = st.button("Access denied")
         frame_place = st.empty()
 
-        if source_option == "Pokophone" and img_file is not None:
+        if source_option == "Mobilephone" and img_file is not None:
             file_bytes=np.asarray(bytearray(img_file.read()), dtype = np.uint8)
             frame = cv2.imdecode(file_bytes,1)
             st.image(frame, channels="BGR")
@@ -81,7 +81,7 @@ class second:
                 while self.cap.isOpened() and not stop_button:
                     ret, frame = self.cap.read()
                     if not ret:
-                        st.write("Idi naher")
+                        st.write("Error")
                         break
 
                     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2YCrCb)
