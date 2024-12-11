@@ -1,10 +1,10 @@
 from PIL import Image
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
-from Pages import first
+from Pages import First
 from Pages import Home
-from Pages import second
-from Pages import third
+from Pages import Second
+from Pages import Third
 import os
 import pandas as pd
 import numpy as np
@@ -13,9 +13,9 @@ image = Image.open('./img/pingi.jpg')
 st.set_page_config(initial_sidebar_state="collapsed", page_icon=image)
 
 logo_path = os.path.join(os.path.dirname(__file__), "img", "bomj.svg")
-pages = [" ",'Home','first', 'second', 'third']
+pages = [" ",'Home','First', 'Second', 'Third']
 
-pages = ['Home', 'first', 'second', 'third']
+pages = ['Home', 'First', 'Second', 'Third']
 
 styles = {
     "nav": {
@@ -60,12 +60,12 @@ page = st_navbar(pages, styles=styles,logo_path=logo_path,options=options )
 
 if page == 'Home':
     Home.Home().app()
-elif page == 'first':
-    first.first().app()
-elif page == 'second':
-    second.second().app()
-elif page == 'third':
-    third.third().app()
+elif page == 'First':
+    First.First().app()
+elif page == 'Second':
+    Second.Second().app()
+elif page == 'Third':
+    Third.Third().app()
 else:
     Home.Home().app()
 
